@@ -1,4 +1,4 @@
-FROM ubuntu:20.10
+FROM ubuntu:20.04
 
 # for tzdata
 ENV DEBIAN_FRONTEND=noninteractive
@@ -8,7 +8,7 @@ RUN apt-get update
 RUN apt-get install -y build-essential git subversion cmake libx11-dev libxxf86vm-dev libxcursor-dev libxi-dev libxrandr-dev libxinerama-dev libglew-dev
 
 RUN mkdir -p ~/blender-git
-RUN git clone https://git.blender.org/blender.git ~/blender-git/blender
+RUN git clone --depth 1 https://git.blender.org/blender.git ~/blender-git/blender
 RUN mkdir -p ~/blender-git/lib
 RUN cd ~/blender-git/lib && svn checkout https://svn.blender.org/svnroot/bf-blender/trunk/lib/linux_centos7_x86_64
 
